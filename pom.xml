@@ -54,7 +54,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- Internal libs -->
+            <!-- Internal libs BEGIN-->
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>dragon-common</artifactId>
@@ -85,6 +85,18 @@
                 <artifactId>dragon-log</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>dragon-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>dragon-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- Internal libs END-->
+
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
