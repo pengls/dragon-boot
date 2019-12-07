@@ -1,0 +1,67 @@
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for bus_log
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_bus_log`;
+CREATE TABLE `tb_bus_log`  (
+  `log_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `app` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `model` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `bus_desc` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `operator` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `node` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `create_time` datetime(0) NOT NULL,
+  `dataset` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `result` varchar(8) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `times` bigint(20) NULL DEFAULT NULL,
+  `status` int(4) NULL DEFAULT 1,
+  `finish_time` datetime(0) NOT NULL,
+  PRIMARY KEY (`log_id`, `create_time`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- 创建索引
+CREATE INDEX IDX_LOG_APP ON tb_bus_log (app);
+CREATE INDEX IDX_LOG_OPERATOR ON tb_bus_log(operator);
+
+-- 创建分区
+ALTER TABLE `tb_bus_log` PARTITION BY RANGE ( TO_DAYS( create_time ) ) (
+	PARTITION p20191101 VALUES LESS THAN ( TO_DAYS( '2019-12-01' ) ),
+	PARTITION p20191201 VALUES LESS THAN ( TO_DAYS( '2020-01-01' ) )
+	);
+COMMIT;
+
+-- 自动按月分区函数
+DROP PROCEDURE IF EXISTS `CREATE_PARTITION_BUSLOG`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`%` PROCEDURE `CREATE_PARTITION_BUSLOG`()
+BEGIN
+SELECT REPLACE(partition_name,'p','') INTO @P_NAME FROM information_schema.PARTITIONS WHERE TABLE_NAME='tb_bus_log' ORDER BY PARTITION_ORDINAL_POSITION DESC LIMIT 1;
+-- 分区名字
+SET @NAME_MAX= DATE(DATE_ADD(@P_NAME+0,INTERVAL 1 MONTH))+0;
+-- 分区时间
+SET @MAX= DATE(DATE_ADD(@P_NAME+0,INTERVAL 2 MONTH))+0;
+SET @SQL_ADD =  CONCAT('ALTER TABLE tb_bus_log ADD PARTITION (PARTITION p',@NAME_MAX,' VALUES LESS THAN (TO_DAYS (''',DATE(@MAX),''')))');
+SELECT @SQL_ADD;
+PREPARE STMT FROM @SQL_ADD;
+EXECUTE STMT;
+DEALLOCATE PREPARE STMT;
+COMMIT ;
+END
+;;
+DELIMITER ;
+
+-- 开启数据库定时任务
+set global event_scheduler=1;
+
+-- 定时任务
+DROP EVENT IF EXISTS `CREATE_PARTITION_BUSLOG_EVENT`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`%` EVENT `CREATE_PARTITION_BUSLOG_EVENT` ON SCHEDULE EVERY 1 DAY STARTS '2019-11-17 23:59:59' ON COMPLETION PRESERVE ENABLE DO CALL CREATE_PARTITION_BUSLOG()
+;;
+DELIMITER ;
+
+
+
+SET FOREIGN_KEY_CHECKS = 1;

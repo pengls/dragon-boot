@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true" scanPeriod="10 seconds">
+    <springProperty scope="context" name="LOG_ROOT_LEVEL" source="LOG_ROOT_LEVEL"/>
+    <springProperty scope="context" name="LOG_HOME" source="LOG_HOME"/>
+    <springProperty scope="context" name="LOG_PREFIX" source="LOG_PREFIX"/>
+    <springProperty scope="context" name="LOG_CONSOLE_FORMAT" source="LOG_CONSOLE_FORMAT"/>
+    <springProperty scope="context" name="LOG_FILE_FORMAT" source="LOG_FILE_FORMAT"/>
+    <springProperty scope="context" name="LOG_FILE_MAX_SIZE" source="LOG_FILE_MAX_SIZE"/>
+    <springProperty scope="context" name="LOG_FILE_MAX_HISTORY" source="LOG_FILE_MAX_HISTORY"/>
+    <springProperty scope="context" name="LOG_FILE_TOTAL_SIZE" source="LOG_FILE_TOTAL_SIZE"/>
+
+    <!-- 按照每天生成日志文件 -->
+    <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/${LOG_PREFIX}.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 每天一归档 -->
+            <fileNamePattern>${LOG_HOME}/${LOG_PREFIX}-%d{yyyyMMdd}.log.%i</fileNamePattern>
+            <maxFileSize>${LOG_FILE_MAX_SIZE}</maxFileSize>
+            <maxHistory>${LOG_FILE_MAX_HISTORY}</maxHistory>
+            <totalSizeCap>${LOG_FILE_TOTAL_SIZE}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <Pattern>${LOG_FILE_FORMAT}</Pattern>
+        </encoder>
+    </appender>
+
+    <!--错误信息按照每天生成日志文件-->
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <File>${LOG_HOME}/${LOG_PREFIX}-error.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 每天一归档 -->
+            <fileNamePattern>${LOG_HOME}/${LOG_PREFIX}-error-%d{yyyyMMdd}.log.%i</fileNamePattern>
+            <maxFileSize>${LOG_FILE_MAX_SIZE}</maxFileSize>
+            <maxHistory>${LOG_FILE_MAX_HISTORY}</maxHistory>
+            <totalSizeCap>${LOG_FILE_TOTAL_SIZE}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <!--格式化输出-->
+            <Pattern>${LOG_FILE_FORMAT}</Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>${LOG_CONSOLE_FORMAT}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 日志输出级别 -->
+    <root level="${LOG_ROOT_LEVEL}">
+        <appender-ref ref="INFO_FILE" />
+        <appender-ref ref="ERROR_FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

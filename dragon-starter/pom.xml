@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>dragon-boot</artifactId>
+        <groupId>com.dragon</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>dragon-starter</artifactId>
+    <name>dragon-starter</name>
+    <packaging>jar</packaging>
+    <description>starter模块</description>
+
+    <dependencies>
+        <!-- 内置容器替换 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
+
+        <!-- SpringBoot 监控组件 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!-- 公共包 -->
+        <dependency>
+            <groupId>com.dragon</groupId>
+            <artifactId>dragon-common</artifactId>
+        </dependency>
+
+        <!-- web -->
+        <dependency>
+            <groupId>com.dragon</groupId>
+            <artifactId>dragon-web</artifactId>
+        </dependency>
+
+        <!-- 数据源 -->
+        <dependency>
+            <groupId>com.dragon</groupId>
+            <artifactId>dragon-datasource</artifactId>
+        </dependency>
+
+        <!-- mybatis-plus -->
+        <dependency>
+            <groupId>com.dragon</groupId>
+            <artifactId>dragon-mybatis-plus</artifactId>
+        </dependency>
+
+        <!-- redis -->
+        <dependency>
+            <groupId>com.dragon</groupId>
+            <artifactId>dragon-redis</artifactId>
+        </dependency>
+
+        <!-- email -->
+        <dependency>
+            <groupId>com.dragon</groupId>
+            <artifactId>dragon-mail</artifactId>
+        </dependency>
+
+        <!-- log -->
+        <dependency>
+            <groupId>com.dragon</groupId>
+            <artifactId>dragon-log</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>
