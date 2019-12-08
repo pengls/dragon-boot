@@ -52,7 +52,7 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Configuration
-@ConditionalOnProperty(name = "dragon.boot.email.enable", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(name = "dragon.boot.email.enable", havingValue = "true")
 public class MailSender {
     @Autowired
     private JavaMailSender mailSender;

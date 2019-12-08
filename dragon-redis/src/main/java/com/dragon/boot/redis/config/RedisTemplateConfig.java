@@ -38,7 +38,7 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 @Configuration
 @AutoConfigureBefore(value = {RedisAutoConfiguration.class, RedisRepositoriesAutoConfiguration.class})
 @Import({RedisDistributedLock.class, DefaultKeyGenerator.class, RedisCacheableAspect.class})
-@ConditionalOnProperty(name = "dragon.boot.redis.enable", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(name = "dragon.boot.redis.enable", havingValue = "true")
 public class RedisTemplateConfig {
     @Value("${spring.application.name}")
     private String pre;

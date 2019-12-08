@@ -16,13 +16,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @EnableTransactionManagement
 @Configuration
-@MapperScanner(basePackages = {"${drogan.boot.mybatis-plus.mapper-scan}"})
+@MapperScanner(basePackages = {"${dragon.boot.mybatis-plus.mapper-scan}"})
 public class MybatisPlusAutoConfig {
     /**
      * 分页插件
      */
     @Bean
-    @ConditionalOnProperty(name = "drogan.boot.mybatis-plus.page.enable", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnProperty(name = "dragon.boot.mybatis-plus.page.enable", havingValue = "true", matchIfMissing = true)
     public PaginationInterceptor paginationInterceptor() {
         return new PaginationInterceptor();
     }
