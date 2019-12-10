@@ -1,3 +1,6 @@
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    com.dragon.boot.redis.config.RedisTemplateConfig
+    com.dragon.boot.web.config.DateConverterConfig,\
+    com.dragon.boot.web.config.ErrorConverterConfig,\
+    com.dragon.boot.web.config.GlobalExceptionHandler,\
+    com.dragon.boot.web.config.GlobalConfig

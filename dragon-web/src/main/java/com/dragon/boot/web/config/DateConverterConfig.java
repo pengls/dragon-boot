@@ -15,11 +15,11 @@ import java.util.List;
  * @ClassName DateConverterConfig
  * @Author pengl
  * @Date 2019-05-28 15:59
- * @Description 数据转换器
+ * @Description 数据转换器 ，用于解决SpringMVC从前端接收的数据转换
  * @Version 1.0
  */
 @Configuration
-@ConditionalOnProperty(name = "spring.global.convert.enable", havingValue = "true")
+@ConditionalOnProperty(name = "dragon.boot.convert.enable", havingValue = "true")
 public class DateConverterConfig implements Converter<String, Date> {
     private static final List<String> formarts = new ArrayList<>(4);
 

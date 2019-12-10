@@ -192,7 +192,7 @@ public class LogAspect implements EnvironmentAware, ApplicationListener<WebServe
     @Override
     public void setEnvironment(Environment environment) {
         this.appName = environment.getProperty("spring.application.name");
-        this.ssoType = environment.getProperty("spring.global.sso.type", "");
+        this.ssoType = environment.getProperty("dragon.boot.sso.type", "");
     }
 
     @Override
