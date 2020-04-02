@@ -8,28 +8,30 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>dragon-redis</artifactId>
-    <name>dragon-redis</name>
+    <artifactId>dragon-boot-mail</artifactId>
+    <name>dragon-boot-mail</name>
     <packaging>jar</packaging>
-    <description>redis集成模块</description>
+    <description>邮件发送模块</description>
 
     <dependencies>
+        <!-- 邮件发送支持 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <!-- 模版邮件 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-pool2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>dragon-common</artifactId>
+            <artifactId>dragon-boot-common</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>

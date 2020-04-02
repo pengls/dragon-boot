@@ -8,8 +8,8 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>dragon-starter</artifactId>
-    <name>dragon-starter</name>
+    <artifactId>dragon-boot-starter</artifactId>
+    <name>dragon-boot-starter</name>
     <packaging>jar</packaging>
     <description>starter模块</description>
 
@@ -39,43 +39,43 @@
         <!-- 公共包 -->
         <dependency>
             <groupId>com.dragon</groupId>
-            <artifactId>dragon-common</artifactId>
+            <artifactId>dragon-boot-common</artifactId>
         </dependency>
 
         <!-- web -->
         <dependency>
             <groupId>com.dragon</groupId>
-            <artifactId>dragon-web</artifactId>
+            <artifactId>dragon-boot-web</artifactId>
         </dependency>
 
         <!-- 数据源 -->
         <dependency>
             <groupId>com.dragon</groupId>
-            <artifactId>dragon-datasource</artifactId>
+            <artifactId>dragon-boot-datasource</artifactId>
         </dependency>
 
         <!-- mybatis-plus -->
         <dependency>
             <groupId>com.dragon</groupId>
-            <artifactId>dragon-mybatis-plus</artifactId>
+            <artifactId>dragon-boot-mybatis-plus</artifactId>
         </dependency>
 
         <!-- redis -->
         <dependency>
             <groupId>com.dragon</groupId>
-            <artifactId>dragon-redis</artifactId>
+            <artifactId>dragon-boot-redis</artifactId>
         </dependency>
 
         <!-- email -->
         <dependency>
             <groupId>com.dragon</groupId>
-            <artifactId>dragon-mail</artifactId>
+            <artifactId>dragon-boot-mail</artifactId>
         </dependency>
 
         <!-- log -->
         <dependency>
             <groupId>com.dragon</groupId>
-            <artifactId>dragon-log</artifactId>
+            <artifactId>dragon-boot-log</artifactId>
         </dependency>
 
     </dependencies>

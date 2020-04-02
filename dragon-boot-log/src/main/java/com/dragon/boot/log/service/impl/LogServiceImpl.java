@@ -17,11 +17,13 @@ public class LogServiceImpl implements LogService {
     @Autowired
     private LogMapper logMapper;
 
+    @Override
     @Async(value = "logAsyncExecutor")
     public void insertES(BusLog logEntity){
         //TODO
     }
 
+    @Override
     @Async(value = "logAsyncExecutor")
     public void insertDB(BusLog logEntity){
         logMapper.insert(logEntity);

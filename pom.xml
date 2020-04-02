@@ -7,14 +7,14 @@
     <artifactId>dragon-boot</artifactId>
     <version>1.0.0</version>
     <modules>
-        <module>dragon-redis</module>
-        <module>dragon-mail</module>
-        <module>dragon-common</module>
-        <module>dragon-datasource</module>
-        <module>dragon-mybatis-plus</module>
-        <module>dragon-log</module>
-        <module>dragon-web</module>
-        <module>dragon-starter</module>
+        <module>dragon-boot-redis</module>
+        <module>dragon-boot-mail</module>
+        <module>dragon-boot-common</module>
+        <module>dragon-boot-datasource</module>
+        <module>dragon-boot-mybatis-plus</module>
+        <module>dragon-boot-log</module>
+        <module>dragon-boot-web</module>
+        <module>dragon-boot-starter</module>
     </modules>
     <name>dragon-boot</name>
     <packaging>pom</packaging>
@@ -57,42 +57,42 @@
             <!-- Internal libs BEGIN-->
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>dragon-common</artifactId>
+                <artifactId>dragon-boot-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>dragon-mail</artifactId>
+                <artifactId>dragon-boot-mail</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>dragon-redis</artifactId>
+                <artifactId>dragon-boot-redis</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>dragon-mybatis-plus</artifactId>
+                <artifactId>dragon-boot-mybatis-plus</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>dragon-datasource</artifactId>
+                <artifactId>dragon-boot-datasource</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>dragon-log</artifactId>
+                <artifactId>dragon-boot-log</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>dragon-web</artifactId>
+                <artifactId>dragon-boot-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>dragon-starter</artifactId>
+                <artifactId>dragon-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <!-- Internal libs END-->

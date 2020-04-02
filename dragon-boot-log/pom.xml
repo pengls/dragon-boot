@@ -8,25 +8,25 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>dragon-log</artifactId>
-    <name>dragon-log</name>
+    <artifactId>dragon-boot-log</artifactId>
+    <name>dragon-boot-log</name>
     <packaging>jar</packaging>
     <description>日志模块</description>
 
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>dragon-common</artifactId>
+            <artifactId>dragon-boot-common</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>dragon-datasource</artifactId>
+            <artifactId>dragon-boot-datasource</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>dragon-mybatis-plus</artifactId>
+            <artifactId>dragon-boot-mybatis-plus</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>

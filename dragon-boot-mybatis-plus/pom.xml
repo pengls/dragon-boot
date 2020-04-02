@@ -8,24 +8,20 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>dragon-datasource</artifactId>
-    <name>dragon-datasource</name>
-    <packaging>jar</packaging>
-    <description>数据源模块</description>
+    <artifactId>dragon-boot-mybatis-plus</artifactId>
+    <name>dragon-boot-mybatis-plus</name>
+    <description>dao层模块</description>
 
     <dependencies>
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>p6spy</groupId>
-            <artifactId>p6spy</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>dragon-common</artifactId>
-            <scope>provided</scope>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
+
 </project>
