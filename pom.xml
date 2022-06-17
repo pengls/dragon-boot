@@ -27,7 +27,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-boot-version>2.1.10.RELEASE</spring-boot-version>
-        <fastjson-version>1.2.58</fastjson-version>
+        <fastjson-version>1.2.83</fastjson-version>
         <hutool-version>5.0.7</hutool-version>
         <common-lang3-version>3.9</common-lang3-version>
         <guava-version>28.1-jre</guava-version>
